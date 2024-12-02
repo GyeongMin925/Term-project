@@ -1,16 +1,18 @@
-# 영어 텍스트 인식 프로그램
-import cv2
+from PIL import Image
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-image = cv2.imread('image.png') 
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+def extract_text_from_image(image_path):
+    try:
+        image = Image.open(image_path)
+        text = pytesseract.image_to_string(image, lang='eng+kor')
+        return text
+    except Exception as e:
+        return f"Error: {e}"
 
-extracted_text = pytesseract.image_to_string(gray_image)
+image_path = "image.png"
 
-if extracted_text.strip():  
-    print("<추출된 텍스트>")
-    print(extracted_text)
-else:
-    print("텍스트를 추출 불가능.")
+extracted_text = extract_text_from_image(image_path)
+print("Extracted Text:")
+print(extracted_text)
