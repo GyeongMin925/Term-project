@@ -21,8 +21,7 @@ This project demonstrates how to perform Optical Character Recognition (OCR) on 
 
 ### Software Requirements
 1. Python 3.7 or later
-2. Tesseract OCR engine installed on your system:
-   - [Download Tesseract OCR](https://github.com/tesseract-ocr/tesseract)
+2. Tesseract OCR engine installed on your system
 3. Python packages:
    - `opencv-python`
    - `pytesseract`
